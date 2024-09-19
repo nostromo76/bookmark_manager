@@ -14,6 +14,5 @@ Route::get('/about', function () {
 })->name('about'); // Optional: naming the about route
 
 // Named route for Links page
-Route::get('/links', function () {
-    return view('posts.links');
-})->name('posts.links'); // Naming the links route
+Route::get('/links', [PostController::class, 'linksIndex'])->name('posts.links'); // Updated to use linksIndex method
+Route::get('/links/create', [PostController::class, 'linksCreate']); // Assuming you'll create this method
