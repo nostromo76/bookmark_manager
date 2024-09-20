@@ -1,58 +1,39 @@
 <x-layout>
-
-    <h1>Links page</h1>
-
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                <tr>
-                    <th scope="col" class="px-6 py-3">
-                        Link name
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        URL
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Login
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Password
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Action
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($links as $link)
-                <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{$link->name}}
-                    </th>
-                    <td class="px-6 py-4">
-                        {{$link->url}}
-                    </td>
-                    <td class="px-6 py-4">
-                        @if($link->login == 1)
-                            Yes
-                        @else
-                            No
-                        @endif
-                    </td>
-                    <td class="px-6 py-4">
-                        @if($link->password == 1)
-                            Yes
-                        @else
-                            No
-                        @endif
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+    <div class="max-w-2xl mx-auto p-4 bg-slate-200 dark:bg-slate-900 rounded-lg">
+        <form method="POST" action="{{ route('links.store') }}">
+            @csrf
+            <div class="mb-6">
+                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                <input type="text" id="name" name="name" required class="@error('name') border-red-500 @enderror bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                @error('name')
+                <span class="text-red-500">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="mb-6">
+                <label for="url" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">URL</label>
+                <input type="url" id="url" name="url" required class="@error('url') border-red-500 @enderror bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                @error('url')
+                <span class="text-red-500">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="mb-6">
+                <label for="login" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Login on link</label>
+                <input type="text" id="login" name="login"  class="@error('login') border-red-500 @enderror bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                @error('login')
+                <span class="text-red-500">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="mb-6">
+                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password on link</label>
+                <input type="password" id="password" name="password" class="@error('password') border-red-500 @enderror bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                @error('password')
+                <span class="text-red-500">{{ $message }}</span>
+                @enderror
+            </div>
+           
+            <div class="mb-6">
+                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Store link</button>
+            </div>
+        </form>
     </div>
-
 </x-layout>

@@ -32,4 +32,6 @@ class PostController extends Controller
     {
         return view('posts.create_link'); // Create a view for link creation
     }
+
+
 }
