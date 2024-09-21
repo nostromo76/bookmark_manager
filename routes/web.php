@@ -29,10 +29,10 @@ Route::get('/links/{id}', [LinkController::class, 'show'])->name('links.show');
 Route::put('/links/{id}', [LinkController::class, 'update'])->name('links.update');
 
 Route::delete('/links/{id}', [LinkController::class, 'destroy'])->name('links.destroy');
+Route::get('/links/search', [LinkController::class, 'search'])->name('links.search');
 
 
 
-// Named route for About page
 Route::get('/about', function () {
     return view('posts.about');
 })->name('about');

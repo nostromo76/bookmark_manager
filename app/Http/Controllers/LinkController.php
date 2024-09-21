@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Link;
 use Illuminate\Http\Request;
 
+
 class LinkController extends Controller
 {
     public function index()
@@ -19,7 +20,7 @@ class LinkController extends Controller
     }
 
     public function store(Request $request)
-{
+  {
     $request->validate([
         'name' => 'required|string|max:255',
         'url' => 'required|url',
@@ -37,7 +38,7 @@ class LinkController extends Controller
     $link->save();
 
     return redirect()->route('links.index')->with('success', 'Link stored successfully!');
-}
+ }
 
 
 public function show($id)
@@ -66,6 +67,17 @@ public function destroy($id)
     $link->delete();
     return redirect()->route('links.index')->with('success', 'Link deleted successfully');
 }
+// public function search(Request $request)
+// {
+//     $query = $request->input('query');
+   
 
+//     $links = Link::where('name', 'LIKE', "%{$query}%")
+//                  ->orWhere('url', 'LIKE', "%{$query}%")
+//                  ->get();
 
+    
+
+//     return view('links.show', compact('links'));
+// }
 }

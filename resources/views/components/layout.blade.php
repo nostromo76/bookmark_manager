@@ -11,6 +11,7 @@
 <body bg-slate-1000 dark:bg-slate-700>
 
     <x-nav-bar/>  
+    
 
 
 
