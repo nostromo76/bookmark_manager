@@ -40,18 +40,32 @@ class LinkController extends Controller
 }
 
 
-    public function edit($id)
-    {
-        // Fetch the link by id and return the edit view
-    }
+public function show($id)
+{
+    $link = Link::findOrFail($id);
+    return view('links.show', compact('link'));
+}
+public function edit($id)
+{
+    $link = Link::findOrFail($id);
+    return view('links.edit', compact('link'));
+}
 
-    public function update(Request $request, $id)
-    {
-        // Validate and update the link
-    }
 
-    public function destroy($id)
-    {
-        // Delete the link by id
-    }
+public function update(Request $request, $id)
+{
+    $link = Link::findOrFail($id);
+    $link->update($request->all());
+    return redirect()->route('links.index', $link->id)->with('success', 'Link updated successfully');
+}
+
+
+public function destroy($id)
+{
+    $link = Link::findOrFail($id);
+    $link->delete();
+    return redirect()->route('links.index')->with('success', 'Link deleted successfully');
+}
+
+
 }
