@@ -49,4 +49,5 @@
             @endif
         </tbody>
     </table>
+    
 </x-layout>
