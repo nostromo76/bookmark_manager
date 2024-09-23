@@ -9,6 +9,7 @@ class LoginController extends Controller
     // Method to show the login form
     public function showLoginForm()
     {
+        return view('auth.showLoginForm'); 
         // dd('Login form method called'); 
         // return view('auth.showLoginForm');
     }

@@ -7,12 +7,14 @@ use App\Models\Post;
 use App\Models\Link; // Add your Link model
 
 
+
 class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
-        return view('posts.index', compact('posts'));
+     //    $posts = Post::all(); 
+      //  return view('links.index', compact('posts')); // Pass the posts to the view
+        
     }
 
     public function create()

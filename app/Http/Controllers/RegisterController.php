@@ -24,18 +24,15 @@ class RegisterController extends Controller
             'email' => 'required|email|unique:users,email',
             'password' => ['required', 'string', 'min:8', 'confirmed', Password::defaults()],
         ]);
-
+    
         // Create new user
-        $user = User::create([
+        User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-
-        // Optionally log in the user
-        // auth()->login($user);
-
-        // Redirect
-        return to_route('posts.index');
+       
+        // Redirect to links.index
+        return to_route('links.index');
     }
-}
+    }

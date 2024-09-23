@@ -33,7 +33,7 @@ Route::put('/links/{id}', [LinkController::class, 'update'])->name('links.update
 
 Route::delete('/links/{id}', [LinkController::class, 'destroy'])->name('links.destroy');
 Route::get('/links/search', [LinkController::class, 'search'])->name('links.search');
-
+Route::get('/links', [LinkController::class, 'index'])->name('links.index')->middleware('auth');
 
 
 
@@ -59,6 +59,3 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout')->middl
 
 
 
-Route::get('/about', function () {
-    return view('posts.about');
-})->name('about');
