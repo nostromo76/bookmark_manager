@@ -42,6 +42,6 @@ class LoginController extends Controller
         $request->session()->invalidate(); // Invalidate the session
         $request->session()->regenerateToken(); // Regenerate the CSRF token
 
-        return to_route('posts.index'); // Redirect to posts index
+        return to_route('links.index'); // Redirect to posts index
     }
 }
