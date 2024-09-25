@@ -12,7 +12,7 @@
 
     <x-nav-bar/>  
     
-
+ <x-footer/>
 
 
     <div class="max-w-6xl mx-auto">
